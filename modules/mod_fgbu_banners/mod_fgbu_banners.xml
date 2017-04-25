@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="site" method="upgrade">
+	<name>mod_fgbu_banners</name>
+	<author>Бакеев Д.Р. (Joomla! Project)</author>
+	<creationDate>04-2017</creationDate>
+	<version>3.0.0</version>
+	<description>Модуль отображает действующие баннеры, созданные в компоненте баннеров. В стандартный модуль добавлена опция отображения баннеров с подписью</description>
+	<files folder="site">
+		<filename module="mod_fgbu_banners">mod_fgbu_banners.php</filename>
+		<folder>tmpl</folder>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<languages folder="language">
+		<language tag="ru-RU">ru-RU.mod_fgbu_banners.ini</language>
+		<language tag="ru-RU">ru-RU.mod_fgbu_banners.sys.ini</language>
+	</languages>
+	<updateservers>
+		<server type="collection" priority="1" name="FGBU Update Service">http://update.kadastr.ru/joomla/update.xml</server>
+	</updateservers>
+	<config>
+		<fields name="params">
+			<fieldset
+				name="basic"
+				addfieldpath="/administrator/components/com_banners/models/fields"
+				>
+
+				<field
+					name="target"
+					type="list"
+					label="MOD_FGBU_BANNERS_FIELD_TARGET_LABEL"
+					description="MOD_FGBU_BANNERS_FIELD_TARGET_DESC"
+					default="1"
+					>
+					<option value="0">JBROWSERTARGET_PARENT</option>
+					<option value="1">JBROWSERTARGET_NEW</option>
+					<option value="2">JBROWSERTARGET_POPUP</option>
+				</field>
+
+				<field
+					name="count"
+					type="text"
+					label="MOD_FGBU_BANNERS_FIELD_COUNT_LABEL"
+					description="MOD_FGBU_BANNERS_FIELD_COUNT_DESC"
+					default="5"
+					class="validate-numeric"
+					filter="integer"
+				/>
+
+				<field
+					name="cid"
+					type="bannerclient"
+					label="MOD_FGBU_BANNERS_FIELD_BANNERCLIENT_LABEL"
+					description="MOD_FGBU_BANNERS_FIELD_BANNERCLIENT_DESC"
+				/>
+
+				<field
+					name="catid"
+					type="category"
+					label="JCATEGORY"
+					description="MOD_FGBU_BANNERS_FIELD_CATEGORY_DESC"
+					extension="com_banners"
+					multiple="true"
+					size="5"
+					default=""
+					>
+					<option value="">JOPTION_ALL_CATEGORIES</option>
+				</field>
+
+				<field
+					name="tag_search"
+					type="radio"
+					label="MOD_FGBU_BANNERS_FIELD_TAG_LABEL"
+					description="MOD_FGBU_BANNERS_FIELD_TAG_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field
+					name="ordering"
+					type="list"
+					label="MOD_FGBU_BANNERS_FIELD_RANDOMISE_LABEL"
+					description="MOD_FGBU_BANNERS_FIELD_RANDOMISE_DESC"
+					default="0"
+					>
+					<option value="0">MOD_FGBU_BANNERS_VALUE_STICKYORDERING</option>
+					<option value="random">MOD_FGBU_BANNERS_VALUE_STICKYRANDOMISE</option>
+				</field>
+				
+				<field
+					name="showlinktext"
+					type="radio"
+					label="MOD_FGBU_BANNERS_SHOW_LINK_TEXT"
+					description="MOD_FGBU_BANNERS_SHOW_LINK_TEXT_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				
+				<field
+					name="header_text"
+					type="textarea"
+					label="MOD_FGBU_BANNERS_FIELD_HEADER_LABEL"
+					description="MOD_FGBU_BANNERS_FIELD_HEADER_DESC"
+					filter="safehtml"
+					rows="3"
+					cols="40"
+				/>
+
+				<field
+					name="footer_text"
+					type="textarea"
+					label="MOD_FGBU_BANNERS_FIELD_FOOTER_LABEL"
+					description="MOD_FGBU_BANNERS_FIELD_FOOTER_DESC"
+					filter="safehtml"
+					rows="3"
+					cols="40"
+				/>
+			</fieldset>
+			<fieldset name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+				/>
+
+				<field
+					name="moduleclass_sfx"
+					type="textarea" rows="3"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
+				/>
+				<field
+					name="itemclass_sfx"
+					type="textarea" rows="3"
+					label="MOD_FGBU_BANNERS_FIELD_ITEMCLASS_SFX_LABEL"
+					description="MOD_FGBU_BANNERS_FIELD_ITEMCLASS_SFX_DESC"
+				/>
+
+				<field
+					name="cache"
+					type="list"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC"
+					default="1"
+					>
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="text"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC"
+					default="900"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
